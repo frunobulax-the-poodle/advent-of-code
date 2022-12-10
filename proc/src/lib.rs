@@ -35,9 +35,9 @@ pub fn main(_attrs: TokenStream, items: TokenStream) -> TokenStream {
             let time = now.elapsed().as_millis();
 
             println!("++++++++++ DAY {} ++++++++++", day);
-            println!("Part 1: {}", p1);
-            println!("Part 2: {}\n", p2);
-            println!("Time: {}ms\n", time);
+            println!("Part 1\n{}\n", p1);
+            println!("Part 2\n{}\n", p2);
+            println!("Time\n{}ms\n", time);
             Ok(())
         }
     };
