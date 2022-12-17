@@ -21,6 +21,10 @@ impl<const N: usize> VI<N> {
     pub fn abs(&self) -> Self {
         Vector(self.0.map(|n| n.abs()))
     }
+
+    pub fn manhattan(&self, other: &VI<N>) -> isize {
+        (*self - *other).abs().0.iter().sum()
+    }
 }
 
 impl<T: Mul<Output = T> + Copy, const N: usize> Vector<T, N> {
@@ -74,5 +78,13 @@ impl<T: MulAssign + Copy, const N: usize> MulAssign<T> for Vector<T, N> {
         for i in 0..N {
             self.0[i] *= rhs;
         }
+    }
+}
+
+impl<T: Div<Output = T> + Copy, const N: usize> Div<T> for Vector<T, N> {
+    type Output = Self;
+
+    fn div(self, rhs: T) -> Self {
+        Vector(self.0.map(|n| n / rhs))
     }
 }
